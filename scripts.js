@@ -42,3 +42,15 @@ function convertToSeconds(hh, mm, ss){
     var int_hh = hh * 60 * 60;
     return (int_ss + int_mm + int_hh);
 }
+
+function paceCalculator(hh, mm, ss, dist, unit){
+    var seconds = convertToSeconds(hh, mm, ss);
+    var distance = convertToMeters(dist, unit);
+    var toSecondsPerMeter = seconds / distance;
+    var pace_min = Math.floor((toSecondsPerMeter * units.kilometer) / 60);
+    var pace_sec = Math.floor((toSecondsPerMeter * units.kilometer) % 60);
+    if (pace_sec < 9){
+        pace_sec = "0" + pace_sec;
+    }    
+    return pace_min + ":" + pace_sec + "/km";
+}
