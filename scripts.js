@@ -1,3 +1,10 @@
+var timeHH = document.getElementById("time-hh").value,
+    timeMM = document.getElementById("time=mm").value,
+    timeSS = document.getElementById("time-ss").value,
+    distance = document.getElementById("dist").value,
+    paceMM = document.getElementById("pace-mm").value,
+    paceSS = document.getElementById("pace-ss").value,
+
 var units = {
     meter: 1,
     kilometer: 1000,
