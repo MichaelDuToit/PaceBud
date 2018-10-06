@@ -4,14 +4,14 @@ var units = {
     yard: 0.9144,
     mile: 1609.344
 }
-
+/*
 var timeHH = Number(document.getElementById("time-hh").value),
     timeMM = Number(document.getElementById("time-mm").value),
     timeSS = Number(document.getElementById("time-ss").value),
     distance = Number(document.getElementById("dist").value),
     paceMM = Number(document.getElementById("pace-mm").value),
     paceSS = Number(document.getElementById("pace-ss").value);
-
+*/
 
 /*
 function calculatePace(time, distance){
@@ -64,9 +64,27 @@ function paceCalculator(hh, mm, ss, dist, unit){
     return pace_min + ":" + pace_sec + "/km";
 }
 
-function distanceCalculator(p_mm, p_ss, t_hh, t_mm, t_ss){
+function distanceCalculator(p_mm, p_ss, p_dist, t_hh, t_mm, t_ss){
     var time = convertToSeconds(t_hh, t_mm, t_ss);
-    var pace = convertToSeconds(0, p_mm, p_ss);
+    var pace = convertToSeconds(0, p_mm, p_ss, p_dist);
     var distance = time / pace;
-    return distance;
+    return convertToMeters(distance, p_dist) + 'm';
+}
+
+function timeCalculator(p_mm, p_ss, p_dist, p_unit, dist, unit){
+    var seconds = convertToSeconds(0, p_mm, p_ss);
+    var pace_distance = convertToMeters(p_dist, p_unit);
+    var distance = convertToMeters(dist, unit);
+    var result = (seconds / pace_distance) * distance;
+    var f = {
+        min: Math.floor(result / 60),
+        sec: Math.floor(result % 60),
+    }
+    if(f.min < 9){
+        f.min = "0" + f.min;
+    }
+    if (f.sec < 9){
+        f.sec = "0" + f.sec;
+    }
+    return f.min + ':' + f.sec;
 }
