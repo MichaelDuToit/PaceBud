@@ -18,46 +18,53 @@ function calculateDistance(time, pace){
     return time / pace;
 }
 */
+var timeHH, timeMM, timeSS, dist, paceMM, paceSS, pace_unit, paceOption, dist_unit, distOption;
+
+function assignValues(){
+    return (
+        timeHH = document.getElementById("time-hh").value,
+        timeMM = document.getElementById("time-mm").value,
+        timeSS = document.getElementById("time-ss").value,
+        dist = document.getElementById("dist"),
+        paceMM = document.getElementById("pace-mm"),
+        paceSS = document.getElementById("pace-ss"),
+        pace_unit = document.getElementById('pace_option'),
+        paceOption = pace_unit.options[pace_unit.selectedIndex].value.toLowerCase(),
+        dist_unit = document.getElementById('dist_option'),
+        distOption = dist_unit.options[dist_unit.selectedIndex].value.toLowerCase()
+    )
+}
 
 function convertToMeters(value, unit){
-     if(unit == "kilometer" || unit == "km" || unit == "kilometers"){
-        return (value * units.kilometer);
-     }
-     if(unit == "mile" || unit == "mi" || unit == "miles"){
-         return (value * units.mile);
-     }
-     if(unit == "yards" || unit == "y" || unit == "yard"){
-         return (value * units.yard);
-     }
-     if(unit == "meter" || unit == "m" || unit == "meters"){
-         return value;
-     }
-     else {
+    value = Number(value);
+    if(unit == "kilometer" || unit == "km" || unit == "kilometers"){
+    return (value * units.kilometer);
+    }
+    if(unit == "mile" || unit == "mi" || unit == "miles"){
+        return (value * units.mile);
+    }
+    if(unit == "yards" || unit == "y" || unit == "yard"){
+        return (value * units.yard);
+    }
+    if(unit == "meter" || unit == "m" || unit == "meters"){
+        return value;
+    }
+    else {
         return console.log("Measure unit not defined");
     }
 }
 
 function convertToSeconds(hh, mm, ss){
-    var int_ss = ss;
-    var int_mm = mm * 60;
-    var int_hh = hh * 60 * 60;
+    var int_ss = Number(ss);
+    var int_mm = Number(mm) * 60;
+    var int_hh = Number(hh) * 60 * 60;
     return (int_ss + int_mm + int_hh);
 }
 
 function paceCalculator(){
-    var timeHH = Number(document.getElementById("time-hh").value);
-    var timeMM = Number(document.getElementById("time-mm").value);
-    var timeSS = Number(document.getElementById("time-ss").value);
-    var dist = Number(document.getElementById("dist").value);
-    var paceMM = document.getElementById("pace-mm");
-    var paceSS = document.getElementById("pace-ss");
-    var pace_unit = document.getElementById('pace_option');
-    var paceOption = pace_unit.options[pace_unit.selectedIndex].value.toLowerCase();
-    var dist_unit = document.getElementById('dist_option');
-    var distOption = dist_unit.options[dist_unit.selectedIndex].value.toLowerCase();
-    
+    assignValues();
     var seconds = convertToSeconds(timeHH, timeMM, timeSS);
-    var distance = convertToMeters(Number(dist), distOption);
+    var distance = convertToMeters(dist.value, distOption);
     var toSecondsPerMeter = seconds / distance;
     var pace_min = Math.floor((toSecondsPerMeter * units[paceOption]) / 60);
     var pace_sec = ((toSecondsPerMeter * units[paceOption]) % 60);
@@ -71,11 +78,14 @@ function paceCalculator(){
     );
 }
 
-function distanceCalculator(p_mm, p_ss, p_dist, t_hh, t_mm, t_ss){
-    var time = convertToSeconds(t_hh, t_mm, t_ss);
-    var pace = convertToSeconds(0, p_mm, p_ss, p_dist);
+function distanceCalculator(){
+    assignValues();
+    var time = convertToSeconds(timeHH, timeMM, timeSS);
+    var pace = (convertToSeconds(0, paceMM.value, paceSS.value));
     var distance = time / pace;
-    return convertToMeters(distance, p_dist) + 'm';
+    return (
+        dist.value = (distance / units[distOption])
+    );
 }
 
 function timeCalculator(p_mm, p_ss, p_dist, p_unit, dist, unit){
