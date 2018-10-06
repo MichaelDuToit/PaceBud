@@ -1,16 +1,18 @@
-var timeHH = document.getElementById("time-hh").value,
-    timeMM = document.getElementById("time=mm").value,
-    timeSS = document.getElementById("time-ss").value,
-    distance = document.getElementById("dist").value,
-    paceMM = document.getElementById("pace-mm").value,
-    paceSS = document.getElementById("pace-ss").value,
-
 var units = {
     meter: 1,
     kilometer: 1000,
     yard: 0.9144,
     mile: 1609.344
 }
+
+var timeHH = Number(document.getElementById("time-hh").value),
+    timeMM = Number(document.getElementById("time-mm").value),
+    timeSS = Number(document.getElementById("time-ss").value),
+    distance = Number(document.getElementById("dist").value),
+    paceMM = Number(document.getElementById("pace-mm").value),
+    paceSS = Number(document.getElementById("pace-ss").value);
+
+
 /*
 function calculatePace(time, distance){
     return time / distance;
@@ -58,6 +60,13 @@ function paceCalculator(hh, mm, ss, dist, unit){
     var pace_sec = Math.floor((toSecondsPerMeter * units.kilometer) % 60);
     if (pace_sec < 9){
         pace_sec = "0" + pace_sec;
-    }    
+    }
     return pace_min + ":" + pace_sec + "/km";
+}
+
+function distanceCalculator(p_mm, p_ss, t_hh, t_mm, t_ss){
+    var time = convertToSeconds(t_hh, t_mm, t_ss);
+    var pace = convertToSeconds(0, p_mm, p_ss);
+    var distance = time / pace;
+    return distance;
 }
