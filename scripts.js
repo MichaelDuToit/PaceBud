@@ -81,10 +81,10 @@ function paceCalculator(){
 function distanceCalculator(){
     assignValues();
     var time = convertToSeconds(timeHH, timeMM, timeSS);
-    var pace = (convertToSeconds(0, paceMM.value, paceSS.value));
-    var distance = time / pace;
+    var pacePerSecond = (convertToSeconds(0, paceMM.value, paceSS.value) / units[paceOption]);
+    var distance = ((time / pacePerSecond) / units[distOption]);
     return (
-        dist.value = (distance / units[distOption])
+        dist.value = distance
     );
 }
 
