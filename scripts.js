@@ -5,19 +5,6 @@ var units = {
     mile: 1609.344
 }
 
-/*
-function calculatePace(time, distance){
-    return time / distance;
-}
-
-function calculateTime(pace, distance){
-    return pace * distance;
-}
-
-function calculateDistance(time, pace){
-    return time / pace;
-}
-*/
 var timeHH, timeMM, timeSS, dist, paceMM, paceSS, pace_unit, paceOption, dist_unit, distOption;
 
 function assignValues(){
@@ -28,9 +15,9 @@ function assignValues(){
         dist = document.getElementById("dist"),
         paceMM = document.getElementById("pace-mm"),
         paceSS = document.getElementById("pace-ss"),
-        pace_unit = document.getElementById('pace_option'),
+        pace_unit = document.getElementById('pace-option'),
         paceOption = pace_unit.options[pace_unit.selectedIndex].value.toLowerCase(),
-        dist_unit = document.getElementById('dist_option'),
+        dist_unit = document.getElementById('dist-option'),
         distOption = dist_unit.options[dist_unit.selectedIndex].value.toLowerCase()
     )
 }
