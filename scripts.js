@@ -22,9 +22,9 @@ var timeHH, timeMM, timeSS, dist, paceMM, paceSS, pace_unit, paceOption, dist_un
 
 function assignValues(){
     return (
-        timeHH = document.getElementById("time-hh").value,
-        timeMM = document.getElementById("time-mm").value,
-        timeSS = document.getElementById("time-ss").value,
+        timeHH = document.getElementById("time-hh"),
+        timeMM = document.getElementById("time-mm"),
+        timeSS = document.getElementById("time-ss"),
         dist = document.getElementById("dist"),
         paceMM = document.getElementById("pace-mm"),
         paceSS = document.getElementById("pace-ss"),
@@ -63,7 +63,7 @@ function convertToSeconds(hh, mm, ss){
 
 function paceCalculator(){
     assignValues();
-    var seconds = convertToSeconds(timeHH, timeMM, timeSS);
+    var seconds = convertToSeconds(timeHH.value, timeMM.value, timeSS.value);
     var distance = convertToMeters(dist.value, distOption);
     var toSecondsPerMeter = seconds / distance;
     var pace_min = Math.floor((toSecondsPerMeter * units[paceOption]) / 60);
@@ -73,14 +73,13 @@ function paceCalculator(){
     }
     return (
         paceMM.value = pace_min,
-        paceSS.value = pace_sec,
-        console.log(pace_min + ":" + pace_sec + "/" + paceOption)
+        paceSS.value = pace_sec
     );
 }
 
 function distanceCalculator(){
     assignValues();
-    var time = convertToSeconds(timeHH, timeMM, timeSS);
+    var time = convertToSeconds(timeHH.value, timeMM.value, timeSS.value);
     var pacePerSecond = (convertToSeconds(0, paceMM.value, paceSS.value) / units[paceOption]);
     var distance = ((time / pacePerSecond) / units[distOption]);
     return (
@@ -88,20 +87,21 @@ function distanceCalculator(){
     );
 }
 
-function timeCalculator(p_mm, p_ss, p_dist, p_unit, dist, unit){
-    var seconds = convertToSeconds(0, p_mm, p_ss);
-    var pace_distance = convertToMeters(p_dist, p_unit);
-    var distance = convertToMeters(dist, unit);
-    var result = (seconds / pace_distance) * distance;
-    var f = {
-        min: Math.floor(result / 60),
-        sec: Math.floor(result % 60),
+function timeCalculator(){
+    assignValues();
+    var seconds = convertToSeconds(0, paceMM.value, paceSS.value);
+    var distance = convertToMeters(dist.value, distOption);
+    var pace = seconds / units[paceOption];
+    var time = pace * distance;
+    var hours = Math.floor(time / 60 / 60);
+    var minutes = Math.floor(time / 60);
+    var seconds = (time % 60);
+    if (hours > 0){
+        minutes = minutes - (hours * 60);
     }
-    if(f.min < 9){
-        f.min = "0" + f.min;
-    }
-    if (f.sec < 9){
-        f.sec = "0" + f.sec;
-    }
-    return f.min + ':' + f.sec;
+    return (
+        timeHH.value = hours,
+        timeMM.value = minutes,
+        timeSS.value = seconds
+    );
 }
