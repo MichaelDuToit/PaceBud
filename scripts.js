@@ -1,3 +1,5 @@
+'use strict'
+
 var units = {
     meter: 1,
     kilometer: 1000,
@@ -5,7 +7,7 @@ var units = {
     mile: 1609.344
 }
 
-var timeHH, timeMM, timeSS, dist, paceMM, paceSS, pace_unit, paceOption, dist_unit, distOption;
+var timeHH, timeMM, timeSS, dist, paceMM, paceSS, paceUnit, paceOption, distUnit, distOption;
 
 function assignValues(){
     return (
@@ -15,10 +17,10 @@ function assignValues(){
         dist = document.getElementById("dist"),
         paceMM = document.getElementById("pace-mm"),
         paceSS = document.getElementById("pace-ss"),
-        pace_unit = document.getElementById('pace-option'),
-        paceOption = pace_unit.options[pace_unit.selectedIndex].value.toLowerCase(),
-        dist_unit = document.getElementById('dist-option'),
-        distOption = dist_unit.options[dist_unit.selectedIndex].value.toLowerCase()
+        paceUnit = document.getElementById('pace-option'),
+        paceOption = paceUnit.options[paceUnit.selectedIndex].value.toLowerCase(),
+        distUnit = document.getElementById('dist-option'),
+        distOption = distUnit.options[distUnit.selectedIndex].value.toLowerCase()
     )
 }
 
