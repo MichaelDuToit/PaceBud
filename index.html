@@ -10,26 +10,26 @@
 <form>
     <fieldset>
         <legend>Time</legend>
-        <input type="number" placeholder="hh" id="time-hh" />
-        <input type="number" placeholder="mm" id="time-mm" />
-        <input type="number" placeholder="ss" id="time-ss" />
-        <button type="button">Calculate Time</button>
+        <input type="number" placeholder="hh" id="time-hh" min="0"/>
+        <input type="number" placeholder="mm" id="time-mm" min="0"/>
+        <input type="number" placeholder="ss" id="time-ss" min="0"/>
+        <button type="button" onclick="timeCalculator()">Calculate Time</button>
     </fieldset>
     <fieldset>
         <legend>Distance</legend>
-        <input type="number" placeholder="Dist" id="dist" />
+        <input type="number" placeholder="Dist" id="dist" min="0"/>
         <select id="dist_option">
             <option value="kilometer">Kilometers</option>
             <option value="mile">Miles</option>
             <option value="meter">Meters</option>
             <option value="yard">Yards</option>
         </select>
-        <button type="button">Calculate Distance</button>
+        <button type="button" onclick="distanceCalculator()">Calculate Distance</button>
     </fieldset>
     <fieldset>
         <legend>Pace</legend>
-        <input type="number" placeholder="mm" id="pace-mm" />
-        <input type="number" placeholder="ss" id="pace-ss" /> per
+        <input type="number" placeholder="mm" id="pace-mm" min="0"/>
+        <input type="number" placeholder="ss" id="pace-ss" min="0"/> per
         <select id="pace_option">
             <option value="kilometer">Kilometer</option>
             <option value="mile">Mile</option>
