@@ -9,7 +9,7 @@ var units = {
 
 var timeHH, timeMM, timeSS, dist, paceMM, paceSS, paceUnit, paceOption, distUnit, distOption;
 
-function assignValues(){
+function updateValues(){
     return (
         timeHH = document.getElementById("time-hh"),
         timeMM = document.getElementById("time-mm"),
@@ -51,7 +51,7 @@ function convertToSeconds(hh, mm, ss){
 }
 
 function paceCalculator(){
-    assignValues();
+    updateValues();
     var seconds = convertToSeconds(timeHH.value, timeMM.value, timeSS.value);
     var distance = convertToMeters(dist.value, distOption);
     var toSecondsPerMeter = seconds / distance;
@@ -67,7 +67,7 @@ function paceCalculator(){
 }
 
 function distanceCalculator(){
-    assignValues();
+    updateValues();
     var time = convertToSeconds(timeHH.value, timeMM.value, timeSS.value);
     var pacePerSecond = (convertToSeconds(0, paceMM.value, paceSS.value) / units[paceOption]);
     var distance = ((time / pacePerSecond) / units[distOption]);
@@ -77,7 +77,7 @@ function distanceCalculator(){
 }
 
 function timeCalculator(){
-    assignValues();
+    updateValues();
     var seconds = convertToSeconds(0, paceMM.value, paceSS.value);
     var distance = convertToMeters(dist.value, distOption);
     var pace = seconds / units[paceOption];

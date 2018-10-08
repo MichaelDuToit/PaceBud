@@ -4,41 +4,49 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pace Calculator PWA</title>
+    <link href="./style.css" rel="stylesheet" />
 </head>
 <body>
-<h1>Pace Calculator</h1>
-<form>
-    <fieldset>
-        <legend>Time</legend>
-        <input type="number" placeholder="hh" id="time-hh" min="0"/>:
-        <input type="number" placeholder="mm" id="time-mm" min="0"/>:
-        <input type="number" placeholder="ss" id="time-ss" min="0"/>
-        <button type="button" onclick="timeCalculator()">Calculate Time</button>
-    </fieldset>
-    <fieldset>
-        <legend>Distance</legend>
-        <input type="number" placeholder="Dist" id="dist" min="0"/>
-        <select id="dist-option">
-            <option value="kilometer">Kilometers</option>
-            <option value="mile">Miles</option>
-            <option value="meter">Meters</option>
-            <option value="yard">Yards</option>
-        </select>
-        <button type="button" onclick="distanceCalculator()">Calculate Distance</button>
-    </fieldset>
-    <fieldset>
-        <legend>Pace</legend>
-        <input type="number" placeholder="mm" id="pace-mm" min="0"/>:
-        <input type="number" placeholder="ss" id="pace-ss" min="0"/> per
-        <select id="pace-option">
-            <option value="kilometer">Kilometer</option>
-            <option value="mile">Mile</option>
-            <option value="meter">Meter</option>
-            <option value="yard">Yard</option>
-        </select>
-        <button type="button" onclick="paceCalculator()">Calculate Pace</button>
-    </fieldset>
-    <script src="./scripts.js"></script>
-</form>
+<header>
+    <h1>Pace Calculator</h1>
+</header>
+<main>
+    <form>
+        <fieldset>
+            <legend>Time</legend>
+            <p class="info">Enter Distance and Pace to calculate time.</p>
+            <input type="number" placeholder="hh" id="time-hh" min="0"/><span class="colon">:</span>
+            <input type="number" placeholder="mm" id="time-mm" min="0"/><span class="colon">:</span>
+            <input type="number" placeholder="ss" id="time-ss" min="0"/>
+            <button type="button" onclick="timeCalculator()">Calculate Time</button>
+        </fieldset>
+        <fieldset>
+            <legend>Distance</legend>
+            <p class="info">Enter Time and Pace to calculate distance.</p>
+            <input type="number" placeholder="Dist" id="dist" min="0"/>
+            <select id="dist-option">
+                <option value="kilometer">Kilometers</option>
+                <option value="mile">Miles</option>
+                <option value="meter">Meters</option>
+                <option value="yard">Yards</option>
+            </select>
+            <button type="button" onclick="distanceCalculator()">Calculate Distance</button>
+        </fieldset>
+        <fieldset>
+            <legend>Pace</legend>
+            <p class="info">Enter Time and Distance to calculate pace.</p>
+            <input type="number" placeholder="mm" id="pace-mm" min="0"/><span class="colon">:</span>
+            <input type="number" placeholder="ss" id="pace-ss" min="0"/><span>per</span>
+            <select id="pace-option">
+                <option value="kilometer">Kilometer</option>
+                <option value="mile">Mile</option>
+                <option value="meter">Meter</option>
+                <option value="yard">Yard</option>
+            </select>
+            <button type="button" onclick="paceCalculator()">Calculate Pace</button>
+        </fieldset>
+    </form>
+</main>
+<script src="./scripts.js"></script>
 </body>
 </html>
