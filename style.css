@@ -11,6 +11,9 @@ h1 {
     display: block;
     width:100%;
     text-align: center;
+    color: white;
+    background-color: #EF4011;
+    margin-bottom:1rem;
 }
 main {
     margin:0 15%;
@@ -18,7 +21,11 @@ main {
 }
 button {
     font-size:0.85rem;
-    padding:0.1rem;
+    padding:0.3rem 0.45rem;
+    background-color: #EF4011;
+    color: white;
+    border:0;
+    margin-left:0.5rem;
 }
 
 input, select, button {

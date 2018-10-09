@@ -94,3 +94,8 @@ function timeCalculator(){
         timeSS.value = seconds
     );
 }
+/*
+if ('serviceWorker' in navigator){
+    navigator.serviceWorker.register("/pace-calculator-pwa/sw.js");
+}
+*/
