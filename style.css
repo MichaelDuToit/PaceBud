@@ -27,6 +27,10 @@ button {
     border:0;
     margin-left:0.5rem;
 }
+button:hover {
+    cursor: pointer;
+    background-color: rgb(241, 101, 62);
+}
 
 input, select, button {
     height: 1.5rem;

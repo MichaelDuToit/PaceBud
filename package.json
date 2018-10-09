@@ -1,0 +1,25 @@
+{
+  "name": "pace-calculator-pwa",
+  "version": "1.0.0",
+  "description": "A Pace Calculator PWA.",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/michaeldt/pace-calculator-pwa.git"
+  },
+  "author": "Michael Du Toit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/michaeldt/pace-calculator-pwa/issues"
+  },
+  "homepage": "https://gitlab.com/michaeldt/pace-calculator-pwa#readme",
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "babel-loader": "^8.0.4",
+    "webpack": "^4.20.2"
+  }
+}
