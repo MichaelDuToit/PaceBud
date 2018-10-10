@@ -1,0 +1,15 @@
+{
+    "name": "Pace Calculator",
+    "short_name": "Pace Calculator",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color" : "#EF4011",
+    "theme_color": "#EF4011",
+    "description": "Lightweight Pace Calculator Progressive Web App.",
+    "icons": [{
+        "src": "images/",
+        "sizes": "",
+        "type": "image/png"
+
+    }]
+}
