@@ -1,8 +1,9 @@
 const path = require('path');
+
 module.exports = {
-    entry: './src/scripts.js',
+    entry: ['./scripts.js'],
     output: {
-        dirname: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js'
     },
     module: {
@@ -13,7 +14,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['babel/preset-env'],
+                        presets: ['@babel/preset-env'],
                     },
                 }
 

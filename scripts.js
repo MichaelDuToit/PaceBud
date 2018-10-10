@@ -1,10 +1,16 @@
 'use strict'
 
-var units = {
+const units = {
     meter: 1,
     kilometer: 1000,
     yard: 0.9144,
     mile: 1609.344
+}
+
+const button = {
+    time: document.getElementById('time-button'),
+    pace: document.getElementById('pace-button'),
+    distance: document.getElementById('dist-button')
 }
 
 var timeHH, timeMM, timeSS, dist, paceMM, paceSS, paceUnit, paceOption, distUnit, distOption;
@@ -26,16 +32,16 @@ function updateValues(){
 
 function convertToMeters(value, unit){
     value = Number(value);
-    if(unit == "kilometer" || unit == "km" || unit == "kilometers"){
-    return (value * units.kilometer);
+    if (unit == "kilometer" || unit == "km" || unit == "kilometers"){
+        return (value * units.kilometer);
     }
-    if(unit == "mile" || unit == "mi" || unit == "miles"){
+    if (unit == "mile" || unit == "mi" || unit == "miles"){
         return (value * units.mile);
     }
-    if(unit == "yards" || unit == "y" || unit == "yard"){
+    if (unit == "yards" || unit == "y" || unit == "yard"){
         return (value * units.yard);
     }
-    if(unit == "meter" || unit == "m" || unit == "meters"){
+    if (unit == "meter" || unit == "m" || unit == "meters"){
         return value;
     }
     else {
@@ -44,19 +50,19 @@ function convertToMeters(value, unit){
 }
 
 function convertToSeconds(hh, mm, ss){
-    var int_ss = Number(ss);
-    var int_mm = Number(mm) * 60;
-    var int_hh = Number(hh) * 60 * 60;
+    let int_ss = Number(ss);
+    let int_mm = Number(mm) * 60;
+    let int_hh = Number(hh) * 60 * 60;
     return (int_ss + int_mm + int_hh);
 }
 
 function paceCalculator(){
     updateValues();
-    var seconds = convertToSeconds(timeHH.value, timeMM.value, timeSS.value);
-    var distance = convertToMeters(dist.value, distOption);
-    var toSecondsPerMeter = seconds / distance;
-    var pace_min = Math.floor((toSecondsPerMeter * units[paceOption]) / 60);
-    var pace_sec = ((toSecondsPerMeter * units[paceOption]) % 60);
+    let seconds = convertToSeconds(timeHH.value, timeMM.value, timeSS.value);
+    let distance = convertToMeters(dist.value, distOption);
+    let toSecondsPerMeter = seconds / distance;
+    let pace_min = Math.floor((toSecondsPerMeter * units[paceOption]) / 60);
+    let pace_sec = ((toSecondsPerMeter * units[paceOption]) % 60);
     if (pace_sec < 9){
         pace_sec = "0" + pace_sec;
     }
@@ -68,9 +74,9 @@ function paceCalculator(){
 
 function distanceCalculator(){
     updateValues();
-    var time = convertToSeconds(timeHH.value, timeMM.value, timeSS.value);
-    var pacePerSecond = (convertToSeconds(0, paceMM.value, paceSS.value) / units[paceOption]);
-    var distance = ((time / pacePerSecond) / units[distOption]);
+    let time = convertToSeconds(timeHH.value, timeMM.value, timeSS.value);
+    let pacePerSecond = (convertToSeconds(0, paceMM.value, paceSS.value) / units[paceOption]);
+    let distance = ((time / pacePerSecond) / units[distOption]);
     return (
         dist.value = distance
     );
@@ -78,13 +84,13 @@ function distanceCalculator(){
 
 function timeCalculator(){
     updateValues();
-    var seconds = convertToSeconds(0, paceMM.value, paceSS.value);
-    var distance = convertToMeters(dist.value, distOption);
-    var pace = seconds / units[paceOption];
-    var time = pace * distance;
-    var hours = Math.floor(time / 60 / 60);
-    var minutes = Math.floor(time / 60);
-    var seconds = (time % 60);
+    let toSeconds = convertToSeconds(0, paceMM.value, paceSS.value);
+    let distance = convertToMeters(dist.value, distOption);
+    let pace = toSeconds / units[paceOption];
+    let time = pace * distance;
+    let hours = Math.floor(time / 60 / 60);
+    let minutes = Math.floor(time / 60);
+    let seconds = (time % 60);
     if (hours > 0){
         minutes = minutes - (hours * 60);
     }
@@ -94,6 +100,11 @@ function timeCalculator(){
         timeSS.value = seconds
     );
 }
+
+button.time.addEventListener('click', timeCalculator);
+button.pace.addEventListener('click', paceCalculator);
+button.distance.addEventListener('click', distanceCalculator)
+
 /*
 if ('serviceWorker' in navigator){
     navigator.serviceWorker.register("/pace-calculator-pwa/sw.js");
