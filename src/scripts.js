@@ -1,6 +1,4 @@
-import './style.scss';
-
-'use strict'
+import './styles.scss';
 
 const units = {
     meter: 1,
