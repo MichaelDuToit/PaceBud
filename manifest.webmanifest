@@ -1,6 +1,6 @@
 {
-    "name": "Pace Calculator",
-    "short_name": "Pace Calculator",
+    "name": "WhatPace Calculator",
+    "short_name": "WhatPace",
     "start_url": "/index.html",
     "display": "standalone",
     "background_color" : "#EF4011",
