@@ -1,3 +1,6 @@
+$primary_color: #EF4011;
+$white: #ffffff;
+
 * {
     font-family: Arial, Helvetica, sans-serif;
     font-size:15px;
@@ -6,14 +9,20 @@
     box-sizing: border-box;
 }
 
-h1 {
+header {
     font-size: 3rem;
     display: block;
     width:100%;
     text-align: center;
-    color: white;
-    background-color: #EF4011;
-    margin-bottom:1rem;
+    color: $white;
+    background-color: $primary_color;
+    margin-bottom: 1rem;
+    h1 {
+        font-size: 3rem;
+    }
+    h2 {
+        font-size:2.85rem;
+    }
 }
 main {
     margin:0 15%;
@@ -22,7 +31,7 @@ main {
 button {
     font-size:0.85rem;
     padding:0.3rem 0.45rem;
-    background-color: #EF4011;
+    background-color: $primary_color;
     color: white;
     border:0;
     margin-left:0.5rem;
@@ -35,9 +44,14 @@ button:hover {
 input, select, button {
     height: 1.5rem;
 }
+input[type=number]{
+    width: 8rem;
+}
+
 .colon {
     padding: 0 0.15rem;
     font-size:1.1rem;
+    margin-right: -3px;
 }
 .info {
     font-size:0.85rem;
@@ -46,7 +60,15 @@ input, select, button {
 }
 
 fieldset {
+    margin-bottom:0.75rem;
     padding:0.25rem 2% 0.5rem 2%;
+    border-color: $primary_color;
+    border-style:solid;
+}
+fieldset legend {
+    color: $primary_color;
+    font-weight: bold;
+    padding: 0rem 0.5rem;
 }
 
 select, select > option {

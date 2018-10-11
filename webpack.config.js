@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: ['./scripts.js'],
+    entry: ['./src/scripts.js'],
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js'
@@ -19,6 +19,10 @@ module.exports = {
                 }
 
             },
+            {
+                test: /\.(s*)css$/,
+                use: ['style-loader', 'css-loader', 'sass-loader'],
+            }
         ]
     }
 };
