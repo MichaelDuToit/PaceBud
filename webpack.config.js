@@ -33,9 +33,22 @@ module.exports = {
             {
                 test: /\.(s*)css$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'sass-loader',
+                    { loader: MiniCssExtractPlugin.loader },
+                    { loader: 'css-loader',
+                        options: {
+                            minimize: true,
+                        }
+                    },
+                    { loader: 'postcss-loader',
+                        options: {
+                            ident: 'postcss',
+                            plugins: [
+                                require('cssnano'),
+                                require('autoprefixer')
+                            ]
+                        }
+                    },
+                    { loader: 'sass-loader' },
                 ]
             },
         ]
