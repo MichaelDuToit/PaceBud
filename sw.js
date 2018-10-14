@@ -1,9 +1,10 @@
 var cacheVersion = "v1";
-var route = "/pace-calculator-pwa/"
+var route = "/pace-calculator-pwa"
 var cacheFiles = [
     route + "/",
     route + "/index.html",
-    route + "/scripts.js"
+    route + "/scripts.js",
+    route + "/main.css"
 ];
 
 self.addEventListener('install', function(e){
