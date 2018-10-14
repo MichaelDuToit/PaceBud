@@ -1,31 +1,30 @@
-var cacheVersion = "v1";
-var route = "/pace-calculator-pwa"
-var cacheFiles = [
-    route + "/",
-    route + "/index.html",
-    route + "/scripts.js",
-    route + "/main.css"
+const cacheVersion = "v1";
+const cacheFiles = [
+    "/",
+    "/index.html",
+    "/scripts.js",
+    "/main.css"
 ];
 
-self.addEventListener('install', function(e){
-    e.waitUntil(
-        caches.open(cacheVersion).then(function(cache){
-            return cache.addAll(cacheFiles);
+self.addEventListener('install', (event) => {
+    event.waitUntil(
+        caches.open(cacheVersion).then((cache) => {
+            return cache.addAll(cacheVersion);
         })
     );
 });
 
-self.addEventListener('fetch', function(e){
-    e.respondWith(
-        caches.match(e.request).then(function(response){
-            return response || fetch(e.request).then(function(response){
-                return caches.open(cacheVersion).then(function(cache){
-                    cache.put(e.request, response.clone());
+self.addEventListener('fetch', (event) => {
+    event.respondWith(
+        caches.match(event.request).then((response) => {
+            return response || fetch(event.request).then((response) => {
+                return caches.open(cacheVersion).then((cache) =>{
+                    cache.put(event.request, response.clone());
                     return response;
                 });
-            }).catch(function(){
-                return caches.match(route + '/index.html'); //This is SW's version of 404, replace with a not found page later.
+            }).catch(()=>{
+                return caches.match('/'); //404 Page
             })
         })
-    );
-});
+    )
+})
