@@ -23,11 +23,15 @@ header {
     color: $white;
     background-color: $primary_color;
     padding: 1rem 0rem;
-    h1 {
-        font-size: 3rem;
-    }
-    h2 {
-        font-size:2.85rem;
+    a {
+        text-decoration: none;
+        color: inherit;
+        h1 {
+            font-size: 3rem;
+        }
+        h2 {
+            font-size:2.85rem;
+        }
     }
 }
 main {
@@ -46,7 +50,6 @@ button {
 }
 button:hover {
     cursor: pointer;
-    //background-color: rgb(241, 101, 62);
     background-color: lighten($primary_color, 10%)
 }
 
@@ -55,11 +58,11 @@ input, select {
     border:0.8px solid $primary_color;
 }
 input[type=number]{
-    width: 32%;
+    width: 30%;
     padding:0.2rem;
     &#dist{
-        margin-right: 1rem;
-        width:75%;
+        margin-right: 0.2rem;
+        width:50%;
     }
 }
 
@@ -74,8 +77,9 @@ fieldset {
 select, select > option {
     font-size: 1rem;
     width: 20%;
-    min-width:40%;
+    min-width:6.5rem;
     min-width: fit-content;
+    max-width: 40%;
 }
 
 fieldset legend {
@@ -90,12 +94,15 @@ fieldset legend {
     display: flex;
     flex-direction: row;
     align-content: flex-start;
-    flex-wrap: nowrap;
     justify-content: flex-start;
+    flex-wrap: wrap;
+    > * {
+        margin-bottom:0.5rem;
+    }
 }
 
 .colon {
-    padding: 0 0.15rem;
+    padding: 0 0.1rem;
     font-size:1rem;
     font-weight: bold;
 }
