@@ -105,8 +105,7 @@ button.time.addEventListener('click', timeCalculator);
 button.pace.addEventListener('click', paceCalculator);
 button.distance.addEventListener('click', distanceCalculator)
 
-/*
+
 if ('serviceWorker' in navigator){
-    navigator.serviceWorker.register("/pace-calculator-pwa/sw.js");
+    navigator.serviceWorker.register("./sw.js", {scope: '/sites/pace-calculator-pwa/dist/'});
 }
-*/

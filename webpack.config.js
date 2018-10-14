@@ -17,11 +17,10 @@ module.exports = {
             filename: 'index.html',
             template: './src/index.html'
         }),
-        new Copy([{
-            from: './src/assets/*',
-            to: './',
-            flatten: true,
-        }])
+        new Copy([
+            { from: './src/assets/*', to: './', flatten: true, cacahe: {key: 'v1'} },
+            { from: './src/sw.js', to: './', flatten: true }
+        ])
     ],
     module: {
         rules: [

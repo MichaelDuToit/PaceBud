@@ -1,17 +1,18 @@
 const cacheVersion = "v1";
 const cacheFiles = [
-    "/",
-    "/index.html",
-    "/scripts.js",
-    "/main.css"
+    "./",
+    "./index.html",
+    "./main.js",
+    "./main.css"
 ];
 
 self.addEventListener('install', (event) => {
     event.waitUntil(
-        caches.open(cacheVersion).then((cache) => {
-            return cache.addAll(cacheVersion);
-        })
-    );
+        caches.open(cacheVersion)
+            .then(cache => cache.addAll(cacheFiles))
+            .then(self.skipWaiting())
+            .catch(err => console.log('[sw.js]: ' + err))
+        );
 });
 
 self.addEventListener('fetch', (event) => {
