@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/michaeldt/pace-calculator-pwa.git"
+    "url": "git+https://github.com/MichaelDuToit/PaceBud"
   },
   "author": "Michael Du Toit",
-  "license": "ISC",
+  "license": "",
   "bugs": {
-    "url": "https://gitlab.com/michaeldt/pace-calculator-pwa/issues"
+    "url": "https://github.com/MichaelDuToit/PaceBud/issues"
   },
-  "homepage": "https://gitlab.com/michaeldt/pace-calculator-pwa#readme",
+  "homepage": "https://github.com/MichaelDuToit/PaceBud",
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
