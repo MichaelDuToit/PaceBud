@@ -18,7 +18,7 @@ module.exports = {
             template: './src/index.html'
         }),
         new Copy([
-            { from: './src/assets/*', to: './', flatten: true, cacahe: {key: 'v1'} },
+            { from: './src/assets/*', to: './', flatten: true, cache: {key: 'v1'} },
             { from: './src/sw.js', to: './', flatten: true }
         ])
     ],
