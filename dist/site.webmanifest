@@ -1,6 +1,7 @@
 {
     "name": "PaceBud",
     "short_name": "PaceBud",
+    "start_url": "/",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",

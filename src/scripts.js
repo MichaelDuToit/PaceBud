@@ -107,5 +107,5 @@ button.distance.addEventListener('click', distanceCalculator)
 
 
 if ('serviceWorker' in navigator){
-    navigator.serviceWorker.register("./sw.js", {scope: '/sites/pace-calculator-pwa/dist/'});
+    navigator.serviceWorker.register("/sw.js", {scope: '/'});
 }
