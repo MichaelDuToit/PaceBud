@@ -1,18 +1,30 @@
-const cacheVersion = "v1.1";
+const cacheVersion = "v1";
 const cacheFiles = [
-    "/",
-    "/index.html",
-    "/main.js",
-    "/main.css"
+    "./",
+    "./index.html",
+    "./main.js",
+    "./main.css"
 ];
 
 self.addEventListener('install', (event) => {
-    self.skipWaiting();
     event.waitUntil(
         caches.open(cacheVersion)
             .then(cache => cache.addAll(cacheFiles))
-            .catch(err => console.log('[sw.js]: ' + err))
-        );
+        ),
+        self.skipWaiting();
+});
+
+self.addEventListener('activate', (event) => {
+    event.waitUntil(
+        self.clients.claim(),
+        caches.keys().then(keys => Promise.all(
+            keys.map((key)=> {
+                if (key !== cacheVersion){
+                    return caches.delete(key)
+                }
+            })
+        ))
+    );
 });
 
 self.addEventListener('fetch', (event) => {
@@ -28,17 +40,6 @@ self.addEventListener('fetch', (event) => {
             })
         })
     )
+
 });
 
-self.addEventListener('activate', (event) => {
-    self.clients.claim();
-    event.waitUntil(
-        caches.keys().then(keys => Promise.all(
-            keys.map(key => {
-                if(!cacheVersion.includes(key)){
-                    return caches.delete(key);
-                }
-            })
-        ))
-    );
-});
