@@ -109,7 +109,7 @@ button.distance.addEventListener('click', distanceCalculator)
 if ('serviceWorker' in navigator){
     navigator.serviceWorker.register("/sw.js", {scope: '/'}).then(reg => {
         window.addEventListener('load', () => {
-            reg.update();
+            setTimeout(reg.update(), 1000);
         });
     });
 }

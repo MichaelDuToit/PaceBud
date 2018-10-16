@@ -8,7 +8,6 @@ const cacheFiles = [
 
 self.addEventListener('install', (event) => {
     event.waitUntil(
-        self.skipWaiting(),
         caches.open(cacheVersion)
             .then(cache => cache.addAll(cacheFiles))
             .catch(err => console.log('[sw.js]: ' + err))
