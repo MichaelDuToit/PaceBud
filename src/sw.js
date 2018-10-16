@@ -1,9 +1,9 @@
-const cacheVersion = "v1.1";
+const cacheVersion = "v1";
 const cacheFiles = [
-    "./",
-    "./index.html",
-    "./main.js",
-    "./main.css"
+    "/",
+    "/index.html",
+    "/main.js",
+    "/main.css"
 ];
 
 self.addEventListener('install', (event) => {
@@ -35,7 +35,7 @@ self.addEventListener('fetch', (event) => {
                     return response;
                 });
             }).catch(()=>{
-                return caches.match('/'); //404 Page
+                return caches.match('/'); //Go to home page if page not found.
             })
         })
     )

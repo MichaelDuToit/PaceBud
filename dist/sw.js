@@ -1,12 +1,10 @@
-const cacheVersion = "v1.1";
+const cacheVersion = "v1";
 const cacheFiles = [
-    "./",
-    "./index.html",
-    "./main.js",
-    "./main.css"
+    "/",
+    "/index.html",
+    "/main.js",
+    "/main.css"
 ];
-//CURRENT TO DO: Add a Refresh notice to page when update is available.
-
 
 self.addEventListener('install', (event) => {
     event.waitUntil(
@@ -37,7 +35,7 @@ self.addEventListener('fetch', (event) => {
                     return response;
                 });
             }).catch(()=>{
-                return caches.match('/'); //404 Page
+                return caches.match('/'); //Go to home page if page not found.
             })
         })
     )

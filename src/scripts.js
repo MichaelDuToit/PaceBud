@@ -113,7 +113,7 @@ document.getElementById('update-button').addEventListener('click', ()=>{
 });
 
 if ('serviceWorker' in navigator){
-    navigator.serviceWorker.register("/sites/pace-calculator-pwa/dist/sw.js", {scope: '/sites/pace-calculator-pwa/dist/'}).then(
+    navigator.serviceWorker.register("/sw.js", {scope: '/'}).then(
         reg => {
             reg.addEventListener('updatefound', ()=>{
                 newServiceWorker = reg.installing;
