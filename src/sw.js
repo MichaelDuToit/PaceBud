@@ -1,4 +1,4 @@
-const cacheVersion = "v1";
+const cacheVersion = "v1.1";
 const cacheFiles = [
     "/",
     "/index.html",
