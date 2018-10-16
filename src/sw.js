@@ -1,4 +1,4 @@
-const cacheVersion = "v1";
+const cacheVersion = "v1.1";
 const cacheFiles = [
     "./",
     "./index.html",
@@ -10,8 +10,7 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(cacheVersion)
             .then(cache => cache.addAll(cacheFiles))
-        ),
-        self.skipWaiting();
+        )
 });
 
 self.addEventListener('activate', (event) => {
@@ -43,3 +42,8 @@ self.addEventListener('fetch', (event) => {
 
 });
 
+self.addEventListener('message', (event) => {
+    if(event.data.action === 'skipWaiting'){
+        self.skipWaiting();
+    }
+});

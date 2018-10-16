@@ -106,6 +106,35 @@ button.pace.addEventListener('click', paceCalculator);
 button.distance.addEventListener('click', distanceCalculator)
 
 
+let newServiceWorker;
+
+document.getElementById('update-button').addEventListener('click', ()=>{
+    newServiceWorker.postMessage({ action: 'skipWaiting' });
+});
+
 if ('serviceWorker' in navigator){
-    navigator.serviceWorker.register("/sites/pace-calculator-pwa/dist/sw.js", {scope: '/sites/pace-calculator-pwa/dist/'});
+    navigator.serviceWorker.register("/sites/pace-calculator-pwa/dist/sw.js", {scope: '/sites/pace-calculator-pwa/dist/'}).then(
+        reg => {
+            reg.addEventListener('updatefound', ()=>{
+                newServiceWorker = reg.installing;
+                newServiceWorker.addEventListener('statechange', ()=>{
+                    switch(newServiceWorker.state){
+                        case 'installed':
+                        if (navigator.serviceWorker.controller){
+                            let updateNotification = document.getElementById('update-available');
+                            updateNotification.className = 'show';
+                        }
+                        break;
+                    }
+                });
+            });
+        }
+    );
 }
+
+let refresh;
+navigator.serviceWorker.addEventListener('controllerchange', ()=>{
+    if (refresh) return;
+    window.location.reload();
+    refresh = true;
+});
