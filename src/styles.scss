@@ -41,7 +41,7 @@ header {
 }
 main {
     display:block;
-    padding-top:1rem;
+    padding:1rem 0rem;
     margin:0 10%;
     width:80%;
 }
@@ -95,6 +95,24 @@ fieldset legend {
     text-align: left;
 }
 
+footer {
+    background-color: $primary_color;
+    padding: 3%;
+    font-size:1rem;
+    color: $white;
+    .portfolio-link {
+        font-style: italic;
+        font-weight: bold;
+    }
+    a {
+        font-style: normal;
+        text-decoration: underline;
+        font-weight: normal;
+        &:visited {
+            color: $white;
+        }
+    }
+}
 .row-container {
     display: flex;
     flex-direction: row;
