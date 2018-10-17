@@ -56,6 +56,15 @@ function convertToSeconds(hh, mm, ss){
     return (int_ss + int_mm + int_hh);
 }
 
+function formatToTwoDigits(input){
+    if (input.toString().length < 2){
+        let f_input = '0' + input.toString();
+        return f_input;
+    } else {
+        return input;
+    }
+}
+
 function paceCalculator(){
     updateValues();
     let seconds = convertToSeconds(timeHH.value, timeMM.value, timeSS.value);
@@ -63,12 +72,9 @@ function paceCalculator(){
     let toSecondsPerMeter = seconds / distance;
     let pace_min = Math.floor((toSecondsPerMeter * units[paceOption]) / 60);
     let pace_sec = ((toSecondsPerMeter * units[paceOption]) % 60);
-    if (pace_sec < 9){
-        pace_sec = "0" + pace_sec;
-    }
     return (
-        paceMM.value = pace_min,
-        paceSS.value = pace_sec
+        paceMM.value = formatToTwoDigits(pace_min),
+        paceSS.value = formatToTwoDigits(pace_sec)
     );
 }
 
@@ -95,9 +101,9 @@ function timeCalculator(){
         minutes = minutes - (hours * 60);
     }
     return (
-        timeHH.value = hours,
-        timeMM.value = minutes,
-        timeSS.value = seconds
+        timeHH.value = formatToTwoDigits(hours),
+        timeMM.value = formatToTwoDigits(minutes),
+        timeSS.value = formatToTwoDigits(seconds)
     );
 }
 
