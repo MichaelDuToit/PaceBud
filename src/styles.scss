@@ -23,6 +23,7 @@ header {
     text-align: center;
     color: $white;
     background-color: $primary_color;
+    background: linear-gradient(lighten($primary_color, 12%), 25%, $primary_color);
     padding: 1rem 0rem;
     a {
         text-decoration: none;
@@ -97,6 +98,7 @@ fieldset legend {
 
 footer {
     background-color: $primary_color;
+    background: linear-gradient($primary_color, 75%, lighten($primary_color, 12%));
     padding: 3%;
     font-size:1rem;
     color: $white;
