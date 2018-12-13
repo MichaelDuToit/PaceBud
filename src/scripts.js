@@ -14,6 +14,7 @@ const button = {
 }
 
 var timeHH, timeMM, timeSS, dist, paceMM, paceSS, paceUnit, paceOption, distUnit, distOption;
+const inputElements = document.querySelectorAll("input");
 
 function updateValues(){
     return (
@@ -28,6 +29,20 @@ function updateValues(){
         distUnit = document.getElementById('dist-option'),
         distOption = distUnit.options[distUnit.selectedIndex].value.toLowerCase()
     )
+}
+
+function inputCheck(event){
+    const regex = new RegExp('^[0-9]*$');
+    const errMsg = document.getElementById("errMsg");
+
+    let regexTest = regex.test(event.target.value);
+    console.log(`${regexTest} ${event.target.value} ${typeof event.target.value}`);
+    if(!regexTest){
+        this.classList.add('invalidFormat');
+    }
+    else {
+        this.classList.remove('invalidFormat');
+    }
 }
 
 function convertToMeters(value, unit){
@@ -107,11 +122,15 @@ function timeCalculator(){
     );
 }
 
+inputElements.forEach(element => {
+    element.addEventListener('keyup', inputCheck);
+});
+
 button.time.addEventListener('click', timeCalculator);
 button.pace.addEventListener('click', paceCalculator);
 button.distance.addEventListener('click', distanceCalculator)
 
-
+//Service Worker Stuff
 let newServiceWorker;
 
 document.getElementById('update-button').addEventListener('click', ()=>{
