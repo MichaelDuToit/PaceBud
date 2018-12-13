@@ -34,9 +34,7 @@ function updateValues(){
 function inputCheck(event){
     const regex = new RegExp('^[0-9]*$');
     const errMsg = document.getElementById("errMsg");
-
     let regexTest = regex.test(event.target.value);
-    console.log(`${regexTest} ${event.target.value} ${typeof event.target.value}`);
     if(!regexTest){
         this.classList.add('invalidFormat');
     }
