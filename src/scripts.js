@@ -32,7 +32,7 @@ function updateValues(){
 }
 
 function inputCheck(event){
-    const regex = new RegExp('^[0-9]*$');
+    const regex = new RegExp('^[0-9]*\.*[0-9]*$');
     let regexTest = regex.test(event.target.value);
     if(!regexTest){
         this.classList.add('invalidFormat');
@@ -79,9 +79,7 @@ function formatToTwoDigits(input){
 
 function paceCalculator(){
     updateValues();
-    let seconds = convertToSeconds(timeHH.value, timeMM.value, timeSS.value);
-    let distance = convertToMeters(dist.value, distOption);
-    let toSecondsPerMeter = seconds / distance;
+    let toSecondsPerMeter = convertToSeconds(timeHH.value, timeMM.value, timeSS.value) / convertToMeters(dist.value, distOption);  
     let pace_min = Math.floor((toSecondsPerMeter * units[paceOption]) / 60);
     let pace_sec = ((toSecondsPerMeter * units[paceOption]) % 60);
     return (
@@ -102,10 +100,8 @@ function distanceCalculator(){
 
 function timeCalculator(){
     updateValues();
-    let toSeconds = convertToSeconds(0, paceMM.value, paceSS.value);
-    let distance = convertToMeters(dist.value, distOption);
-    let pace = toSeconds / units[paceOption];
-    let time = pace * distance;
+    let pace = convertToSeconds(0, paceMM.value, paceSS.value) / units[paceOption];
+    let time = pace * convertToMeters(dist.value, distOption);
     let hours = Math.floor(time / 60 / 60);
     let minutes = Math.floor(time / 60);
     let seconds = (time % 60);
