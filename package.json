@@ -4,7 +4,7 @@
   "description": "A Pace Calculator PWA.",
   "main": "scripts.js",
   "scripts": {
-    "start": "webpack ./src/scripts.js ./dist/bundle.js",
+    "start": "webpack-dev-server",
     "build": "webpack --config webpack.config.js"
   },
   "repository": {
@@ -18,20 +18,20 @@
   },
   "homepage": "https://github.com/MichaelDuToit/PaceBud",
   "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
-    "autoprefixer": "^9.1.5",
-    "babel-loader": "^8.0.4",
-    "copy-webpack-plugin": "^4.5.3",
-    "css-loader": "^1.0.0",
-    "cssnano": "^4.1.4",
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "autoprefixer": "^9.7.4",
+    "babel-loader": "^8.0.6",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^1.0.1",
+    "cssnano": "^4.1.10",
     "html-webpack-plugin": "^3.2.0",
-    "mini-css-extract-plugin": "^0.4.4",
-    "node-sass": "^4.9.3",
+    "mini-css-extract-plugin": "^0.4.5",
+    "node-sass": "^4.13.1",
     "postcss-loader": "^3.0.0",
-    "sass-loader": "^7.1.0",
+    "sass-loader": "^7.3.1",
     "style-loader": "^0.23.1",
-    "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2"
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
   }
 }
